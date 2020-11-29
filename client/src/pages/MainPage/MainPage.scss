@@ -1,0 +1,11 @@
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(335px, calc(22% - 15px)) calc(78% - 15px);
+  grid-template-rows: 10% calc(45% - 15px) calc(45% - 15px);
+  gap: 15px 15px;
+  grid-template-areas:
+    "markets topbar"
+    "markets stockpreview"
+    "transactions trendingtickers";
+}

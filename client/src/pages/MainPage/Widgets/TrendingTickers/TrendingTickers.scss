@@ -1,0 +1,19 @@
+.wrapper {
+  position: relative;
+  grid-area: trendingtickers;
+  background-color: var(--backgroundTretiaryColor);
+  padding: 1rem;
+
+  &:hover {
+    background-color: var(--backgroundSecondaryColor);
+  }
+  .tableContainer {
+    height: calc(100% - 20px - 2rem);
+  }
+
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

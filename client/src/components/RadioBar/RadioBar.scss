@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  border-radius: 30px;
+  justify-content: space-between;
+  background-color: var(--backgroundColor);
+  padding: 0.55rem;
+  margin: 0 0.5rem;
+
+  .option {
+    font-weight: 440;
+    font-size: 0.7rem;
+    padding: 0.6rem;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+  }
+
+  .selected {
+    background-color: var(--selectedColor);
+    border-radius: 30px;
+    color: var(--backgroundColor);
+  }
+}

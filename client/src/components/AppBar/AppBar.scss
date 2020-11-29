@@ -1,0 +1,41 @@
+.wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--backgroundTretiaryColor);
+  padding: 2rem 1rem;
+
+  .logo {
+    background-image: url("../../assets/logo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    border: none;
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+
+    .navLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      padding: 1rem;
+      margin: 1rem 0;
+      fill: var(--fontSecondaryColor);
+      border-radius: 50%;
+      background-color: var(--backgroundTretiaryColor);
+    }
+
+    .activeLink {
+      fill: var(--fontColor);
+      background-color: var(--backgroundColor);
+    }
+  }
+}

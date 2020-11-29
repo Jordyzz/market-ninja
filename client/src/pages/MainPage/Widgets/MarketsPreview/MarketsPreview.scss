@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  grid-area: markets;
+  background-color: var(--backgroundTretiaryColor);
+  padding: 1rem;
+
+  .market {
+    margin: 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .tableContainer {
+    height: calc(100% - 60px - 20px - 2rem - 1rem);
+  }
+
+  &:hover {
+    background-color: var(--backgroundSecondaryColor);
+  }
+
+  .favoritesIcon {
+    fill: var(--fontSecondaryColor);
+  }
+
+  .spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

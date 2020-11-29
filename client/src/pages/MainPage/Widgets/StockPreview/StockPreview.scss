@@ -1,0 +1,11 @@
+.wrapper {
+  grid-area: stockpreview;
+  background-color: var(--backgroundTretiaryColor);
+  padding: 1rem;
+  color: var(--fontSecondaryColor) !important;
+  fill: var(--fontSecondaryColor) !important;
+
+  &:hover {
+    background-color: var(--backgroundSecondaryColor);
+  }
+}

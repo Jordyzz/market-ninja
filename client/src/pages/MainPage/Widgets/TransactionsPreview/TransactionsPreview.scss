@@ -1,0 +1,8 @@
+.wrapper {
+  grid-area: transactions;
+  background-color: var(--backgroundTretiaryColor);
+
+  &:hover {
+    background-color: var(--backgroundSecondaryColor);
+  }
+}
