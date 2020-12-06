@@ -1,4 +1,45 @@
 .wrapper {
   grid-area: topbar;
   background-color: var(--backgroundTretiaryColor);
+  padding: 1rem;
+
+  .symbolContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .symbolData {
+      display: flex;
+      margin: 0 1rem;
+      fill: var(--fontLoss);
+
+      .symbol {
+        color: var(--fontSecondaryColor);
+        margin-left: 1.5rem;
+      }
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      margin-left: 2rem;
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+
+        .value {
+          font-weight: 440;
+        }
+
+        .label {
+          color: var(--fontSecondaryColor);
+          font-weight: 440;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
 }

@@ -5,7 +5,7 @@ import selectedItemReducer from "./selectedItem";
 
 const rootReducer = combineReducers({
   config: configReducer as Reducer<RI.ConfigState>,
-  selectedItem: selectedItemReducer as Reducer<RI.SelectedItemState>,
+  selectedItems: selectedItemReducer as Reducer<RI.SelectedItemsState>,
 });
 
 export default rootReducer;

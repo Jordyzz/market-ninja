@@ -1,0 +1,1 @@
+export { capitalizeLabel } from "./capitalizeLabel";

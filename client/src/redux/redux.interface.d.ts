@@ -1,6 +1,6 @@
 export interface StoreState {
   config: ConfigState;
-  selectedItem: SelectedItemState;
+  selectedItems: SelectedItemsState;
 }
 
 export interface StoreAction {
@@ -14,6 +14,17 @@ export interface ConfigState {
   errorMessages: Array<string>;
 }
 
-export interface SelectedItemState {
+export type SelectedItemsState = Array<SelectedItem>;
+
+export type SelectedItem = {
   symbol: string;
+  price: SymbolPrice;
+};
+
+export interface SymbolPrice {
+  open: string;
+  high: string;
+  low: string;
+  close: string;
+  volume: string;
 }

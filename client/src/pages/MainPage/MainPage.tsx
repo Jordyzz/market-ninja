@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 
 import styles from "./MainPage.scss";
 import { useSelector } from "@redux/useSelector";
@@ -9,11 +9,21 @@ import TopBar from "@components/TopBar";
 import StockPreview from "./Widgets/StockPreview";
 
 function MainPage() {
+  const selectedItems = useSelector((state) => state.selectedItems);
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={styles.wrapper}
+      style={{
+        gridTemplateAreas: `"markets topbar" "markets ${
+          selectedItems.find((s) => s.price)
+            ? "stockpreview"
+            : "trendingtickers"
+        }" "transactions trendingtickers"`,
+      }}
+    >
       <MarketsPreview />
-      <TopBar />
       <TransactionsPreview />
+      <TopBar />
       <StockPreview />
       <TrendingTickers />
     </div>

@@ -31,7 +31,7 @@ const MarketsPreview = () => {
   const [favorites, setFavorites] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [market, setMarket] = useState(markets.CRYPTO);
-  const selected = useSelector((state) => state.selectedItem);
+  const selectedItems = useSelector((state) => state.selectedItems);
 
   useEffect(() => {
     setIsLoading(true);
@@ -89,7 +89,7 @@ const MarketsPreview = () => {
   const tableCfg: TableProps = {
     isSelectable: true,
     isSelected: (value) => {
-      return selected?.symbol === value[0];
+      return !!selectedItems.find((item) => item.symbol === value[0]);
     },
     onSelect: (idx) => selectedService.setSelectedItem(data[idx].symbol),
     tableHeaders: [
