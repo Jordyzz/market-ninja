@@ -1,11 +1,7 @@
-import { dispatch, getState } from "@redux/store";
-import { toggleSelection, setPriceInfo, clearAll } from "@redux/selectedItem";
+import { dispatch } from "@redux/store";
+import { toggleSelection, clearAll } from "@redux/selectedItem";
 import { httpService } from "@core/HttpService/HttpService";
-import {
-  ApiResponse,
-  SymbolHistoryRes,
-} from "@core/HttpService/http.interface";
-import { SymbolPrice } from "@src/redux/redux.interface";
+import { SymbolHistoryRes } from "@core/HttpService/http.interface";
 
 class SelectedService {
   setSelectedItem(symbol: string) {
@@ -19,10 +15,6 @@ class SelectedService {
     });
 
     return res;
-  }
-
-  updatePriceInfo(symbol: string, price: SymbolPrice) {
-    dispatch(setPriceInfo({ symbol, price }));
   }
 
   clearSelection() {

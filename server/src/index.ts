@@ -3,12 +3,14 @@ import { json } from "body-parser";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import { connect } from "mongoose";
+import axios from "axios";
 
 import { pageController } from "./lib/PageController";
-import { pageScraper } from "./lib/PageScraper";
 import { User } from "./models/User";
-import { has } from "lodash";
+import { template } from "lodash";
 import { Transaction } from "./models/Transaction";
+import { apiUrls } from "./helpers/apiUrls";
+import { declinedQuoteTypes } from "./helpers/quoteTypes";
 
 const main = async () => {
   const mongoose = await connect(
@@ -23,6 +25,21 @@ const main = async () => {
 
   app.use(json());
   app.use(cors());
+
+  app.get("/search", async (req, res) => {
+    const { q } = req.query;
+
+    const url = template(apiUrls.search)({ q });
+
+    const searchRes: any = await axios.get(url);
+    const data = searchRes.data.quotes.filter(
+      (quote: any) =>
+        quote.hasOwnProperty("quoteType") &&
+        !declinedQuoteTypes.includes(quote.quoteType)
+    );
+
+    res.status(201).send(data);
+  });
 
   app.get("/trending-tickers", async (req, res) => {
     let data;
@@ -86,7 +103,7 @@ const main = async () => {
       })
     ).save();
 
-    res.send(user.id);
+    res.send({ id: user.id, email });
   });
 
   app.post("/login", async (req, res) => {

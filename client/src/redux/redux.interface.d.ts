@@ -1,6 +1,9 @@
+import { modalMap } from "@core/ModalService/modalMap";
+
 export interface StoreState {
   config: ConfigState;
   selectedItems: SelectedItemsState;
+  user: UserState;
 }
 
 export interface StoreAction {
@@ -12,13 +15,18 @@ export interface ConfigState {
   theme: string;
   busyCounter: number;
   errorMessages: Array<string>;
+  modal: keyof typeof modalMap | null;
+}
+
+export interface UserState {
+  email: string;
+  id: string;
 }
 
 export type SelectedItemsState = Array<SelectedItem>;
 
 export type SelectedItem = {
   symbol: string;
-  price: SymbolPrice;
 };
 
 export interface SymbolPrice {

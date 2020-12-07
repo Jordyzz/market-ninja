@@ -1,42 +1,62 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { selectedService } from "@pages/MainPage/SelectedService";
 import styles from "./TopBar.scss";
 import { useSelector } from "@redux/useSelector";
-import Bullet from "@components/Bullet";
-import { capitalizeLabel } from "@src/utils";
-import Icon from "@components/Icon";
+import SearchAutoComplete from "./SearchAutoComplete";
+import { httpService } from "@core/HttpService/HttpService";
+import Chip from "@components/Chip";
+import Button from "@components/Button";
+import { modalService } from "@core/ModalService/ModalService";
 
 const TopBar = () => {
   const selectedItems = useSelector((state) => state.selectedItems);
+  const { user } = useSelector((state) => state);
+
+  const fetchOptions = useCallback((input: string) => {
+    return httpService
+      .api({
+        type: "searchAutoComplete",
+        disableBI: true,
+        urlParams: { q: input },
+      })
+      .then((res) => res);
+  }, []);
+
+  const onOptionClick = useCallback(
+    (symbol: string) => selectedService.setSelectedItem(symbol),
+    []
+  );
 
   return (
     <div className={styles.wrapper}>
-      {selectedItems.length > 0 && selectedItems[0].price && (
-        <div className={styles.symbolContainer}>
-          <div className={styles.symbolData}>
-            <Icon
-              type="close"
-              onClick={() => selectedService.clearSelection()}
-              style={{ cursor: "pointer" }}
-            />
-            <span className={styles.symbol}>{selectedItems[0].symbol}</span>
-          </div>
-          {Object.entries(selectedItems[0].price).map((entry) => (
-            <div key={entry[0]} className={styles.container}>
-              <Bullet />
-              <div className={styles.details}>
-                <span className={styles.value}>{entry[1]}</span>
-                <span className={styles.label}>
-                  {capitalizeLabel(entry[0])}
-                </span>
-              </div>
-            </div>
-          ))}
+      <SearchAutoComplete {...{ fetchOptions, onOptionClick }} />
+      <div className={styles.chipContainer}>
+        {selectedItems.map((item) => (
+          <Chip
+            key={item.symbol}
+            label={item.symbol}
+            onDelete={onOptionClick}
+          />
+        ))}
+      </div>
+      {!user ? (
+        <div className={styles.btnContainer}>
+          <Button onClick={() => modalService.openModal("register")}>
+            Register
+          </Button>
+          <Button
+            onClick={() => modalService.openModal("login")}
+            className={styles.loginButton}
+          >
+            Login
+          </Button>
         </div>
+      ) : (
+        <div>{user.email}</div>
       )}
     </div>
   );
 };
 
-export default React.memo(TopBar);
+export default TopBar;

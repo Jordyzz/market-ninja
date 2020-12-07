@@ -1,0 +1,16 @@
+.chip {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  background-color: var(--backgroundSecondaryColor);
+  height: 30px;
+  fill: var(--fontLoss);
+  color: var(--fontColor);
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  .label {
+    margin-left: 0.5rem;
+  }
+}

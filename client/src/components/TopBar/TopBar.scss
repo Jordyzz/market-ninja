@@ -2,44 +2,25 @@
   grid-area: topbar;
   background-color: var(--backgroundTretiaryColor);
   padding: 1rem;
+  display: flex;
+  align-items: center;
 
-  .symbolContainer {
-    width: 100%;
-    height: 100%;
+  .chipContainer {
     display: flex;
     align-items: center;
+    flex: 1;
+    margin: 0 1.5rem;
+    gap: 15px;
+  }
 
-    .symbolData {
-      display: flex;
-      margin: 0 1rem;
-      fill: var(--fontLoss);
+  .loginButton {
+    background-color: transparent;
+    border: 2px solid var(--fontProfit);
+    color: var(--fontProfit);
+    margin-left: 1.5rem;
+  }
 
-      .symbol {
-        color: var(--fontSecondaryColor);
-        margin-left: 1.5rem;
-      }
-    }
-
-    .container {
-      display: flex;
-      align-items: center;
-      margin-left: 2rem;
-
-      .details {
-        display: flex;
-        flex-direction: column;
-        margin-left: 1rem;
-
-        .value {
-          font-weight: 440;
-        }
-
-        .label {
-          color: var(--fontSecondaryColor);
-          font-weight: 440;
-          font-size: 0.9rem;
-        }
-      }
-    }
+  .btnContainer {
+    display: flex;
   }
 }

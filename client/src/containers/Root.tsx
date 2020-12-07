@@ -5,6 +5,7 @@ import store from "@redux/store";
 import App from "./App";
 import { themeService } from "@core/ThemeService";
 import GlobalBusyIndicator from "@components/GlobalBusyIndicator";
+import ModalWrapper from "@core/ModalService/ModalWrapper";
 
 function Root() {
   const [showApp, setShowApp] = useState(false);
@@ -23,6 +24,7 @@ function Root() {
     <ReduxProvider store={store}>
       <App />
       <GlobalBusyIndicator />
+      <ModalWrapper />
     </ReduxProvider>
   );
 }

@@ -15,4 +15,16 @@ export const apiMap: ApiMap = {
     url: `${prefix}/symbol-history?symbol=<%= symbol %>`,
     method: "get",
   },
+  searchAutoComplete: {
+    url: `${prefix}/search?q=<%= q %>`,
+    method: "get",
+  },
+  login: {
+    url: `${prefix}/login`,
+    method: "post",
+  },
+  register: {
+    url: `${prefix}/register`,
+    method: "post",
+  },
 };

@@ -15,15 +15,16 @@ export const setTheme = (payload): StoreAction => ({
   payload,
 });
 
-export const setTempType = (payload): StoreAction => ({
-  type: "config/SET_TEMP_TYPE",
-  payload,
-});
-
 export const addError = (payload): StoreAction => ({
   type: "config/ADD_ERROR",
   payload,
 });
+
+export const setModalType = (payload): StoreAction => ({
+  type: "config/SET_MODAL",
+  payload,
+});
+
 export const clearErrors = (): StoreAction => ({
   type: "config/CLEAR_ERRORS",
   payload: null,
@@ -33,6 +34,7 @@ const initialState: ConfigState = {
   theme: "dark",
   busyCounter: 0,
   errorMessages: [],
+  modal: null,
 };
 
 export default function configReducer(
@@ -42,13 +44,13 @@ export default function configReducer(
   switch (action.type) {
     case "config/SET_THEME":
       return { ...state, theme: action.payload };
-    case "config/SET_TEMP_TYPE":
-      return { ...state, tempType: action.payload };
     case "config/INCREMENT_BUSY_COUNTER":
       return { ...state, busyCounter: state.busyCounter + 1 };
     case "config/DECREMENT_BUSY_COUNTER":
       const busyCounter = Math.max(state.busyCounter - 1, 0);
       return { ...state, busyCounter };
+    case "config/SET_MODAL":
+      return { ...state, modal: action.payload };
     case "config/ADD_ERROR":
       return state.errorMessages.includes(action.payload)
         ? state

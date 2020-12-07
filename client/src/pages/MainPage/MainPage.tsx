@@ -15,9 +15,7 @@ function MainPage() {
       className={styles.wrapper}
       style={{
         gridTemplateAreas: `"markets topbar" "markets ${
-          selectedItems.find((s) => s.price)
-            ? "stockpreview"
-            : "trendingtickers"
+          selectedItems.length > 0 ? "stockpreview" : "trendingtickers"
         }" "transactions trendingtickers"`,
       }}
     >

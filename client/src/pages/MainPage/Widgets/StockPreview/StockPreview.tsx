@@ -8,7 +8,6 @@ import { selectedService } from "@pages/MainPage/SelectedService";
 const StockPreview = () => {
   const [data, setData] = useState<Array<any>>([]);
   const selectedItems = useSelector((state) => state.selectedItems);
-  console.log(selectedItems, data);
 
   useEffect(() => {
     let stock;
@@ -22,7 +21,6 @@ const StockPreview = () => {
       stock = selectedItems.find(
         (item) => !data?.map((series) => series.name).includes(item.symbol)
       );
-      console.log("stock added", stock.symbol);
       selectedService.getSelectedItemHistory(stock.symbol).then((res) => {
         setData((prevState) => [
           ...prevState,
@@ -34,7 +32,6 @@ const StockPreview = () => {
             ]),
           },
         ]);
-        selectedService.updatePriceInfo(stock.symbol, res[0]);
       });
     } else {
       setData((prevState) =>
@@ -42,7 +39,6 @@ const StockPreview = () => {
           selectedItems.find((item) => item.symbol === series.name)
         )
       );
-      console.log("stock removed");
     }
   }, [selectedItems]);
 
